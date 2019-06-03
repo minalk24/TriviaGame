@@ -45,10 +45,13 @@ majorMoveGame = function(){
         clearInterval(moveGame);
         unanswered++;
         console.log("unanswered: " + unanswered);
+        timeUp();
+        setTimeout(restart, 4 * 1000);
     } else if (allowedTime === 0 && count === questionsData.length) {
         clearInterval(moveGame);
         unanswered++;
         console.log("unanswered: " + unanswered);
+        displayResult();
     }
 }
 
@@ -79,6 +82,21 @@ DisplayQandA = function(){
     console.log("count: " + count);
 }
 
+timeUp = function(){
+    $("#questions-note").empty();
+    $(".answers").empty();
+    $(".answers").hide();
+    $("#questions-note").text("Time up!");
+    $("#disclose-answer").text("The correct answer is: " + correctAns[count - 1]);
+}
+
+restart = function() {
+    allowedTime = 15;
+    $("#timer").text("Timer: " + allowedTime);
+    moveGame = setInterval(majorMoveGame, 1000);
+    DisplayQandA();
+}
+
 congrats = function() {
     $("#questions-note").empty();
     $(".answers").empty();
@@ -94,6 +112,18 @@ wrongAns = function() {
     $("#disclose-answer").text("The correct answer is: " + correctAns[count - 1]);
 }
 
+displayResult = function () { 
+    $("#questions-note").empty();
+    $("#disclose-answer").empty();
+    $(".answers").empty();
+    $(".answers").hide();
+    $("#questions-note").text("You're done!");
+    $("#score").append("<h4>Correct answers: " + correct + "</h4>");
+    $("#score").append("<h4>Incorrect answers: " + incorrect + "</h4>");
+    $("#score").append("<h4>Unanswered: " + unanswered + "</h4><br><br>");
+    $("#start-again").attr("style", "display:block");
+}
+
 $(".answers").on("click", function () {
     clearInterval(moveGame); 
     var answer = $(this).val();  
@@ -101,11 +131,33 @@ $(".answers").on("click", function () {
         correct++;
         console.log("correct asnwers: " + correct)      
         congrats();     
-      
+        if (count < questionsData.length) {           
+            setTimeout(restart, 5 * 1000);          
+        } else {            
+            setTimeout(displayResult, 5 * 1000);
+        }
+       
     } else if (answer !== correctAns[count - 1]) {    
         incorrect++;
         console.log("Incorrect asnwers: " + incorrect);     
         wrongAns();     
+        if (count < questionsData.length) { 
+            setTimeout(restart, 5 * 1000);            
+        } else {           
+            setTimeout(displayResult, 5 * 1000);
+        }
     }
 });
 
+//after timeup start again
+$("#start-again").on("click", function () {
+    $("#start").attr("style", "display:none");
+    count = 0;
+    correct = 0;
+    incorrect = 0;
+    unanswered = 0;
+    allowedTime = 15;
+    $("#timer").text("Timer: " + allowedTime);
+    moveGame = setInterval(majorMoveGame, 1000);
+    DisplayQandA();
+});
