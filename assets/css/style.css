@@ -1,5 +1,5 @@
-body
-{background-image: url("../images/bg1.png");
+body{
+    background-image: url("../images/bg1.png");
     background-repeat: no-repeat;
     background-size: cover;
     color:black;
@@ -11,16 +11,16 @@ body
    color:#fff;
 }
 
-/* #start:focus,
-#start:active{
-    background-color: #EAD732;
-   border: 1px solid #3434c7;
-} */
+#start-again{
+    margin:0 auto;
+    background-color: #000;
+    border: 1px solid #000;
+    color:#fff;
+}
 
 .answers{
     width:250px;
     background-color: black;
-    /* border: 1px solid #3434c7; */
     color:white;
    /* Grow */
     display: inline-block;
@@ -31,7 +31,6 @@ body
     -moz-osx-font-smoothing: grayscale;
     transition-duration: 0.3s;
     transition-property: transform;
-    /* box-shadow: 5px 10px px 10px #888888; */
 }
 
 .answers:hover,
@@ -39,7 +38,7 @@ body
 .answers:active {
     transform: scale(1.2);
     background-color:#000;
-   /* border: 1px solid #3434c7; */
+    border: 1px solid #000; 
    color:#fff;
   }
 

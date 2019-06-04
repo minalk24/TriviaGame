@@ -59,7 +59,7 @@ var questionsData = [
 ];
 console.log(questionsData);
 //correct answers and gif images array
-var gifs = ["assets/images/gif1.gif", "assets/images/gif2.gif", "assets/images/gif3.gif", "assets/images/gif4.gif","assets/images/gif5.gif","assets/images/gif6.gif"];
+var gifs = ["assets/images/gif1.gif", "assets/images/gif2.gif", "assets/images/gif3.gif", "assets/images/gif4.gif","assets/images/gif5.gif","assets/images/gif6.gif",,"assets/images/gif7.gif",,"assets/images/gif8.gif"];
 var correctAns = ["Rhaegal","My sun and stars","… pointy end","Jaime Lannister","The Children of the Forest","Ser Barristan Selmy","Braavos","Robert Baratheon"];
 
 //global variable
@@ -80,6 +80,7 @@ $("#start").on("click", function () {
     DisplayQandA();
 });
 
+//function for player doesn't answer display result
 majorMoveGame = function(){
     allowedTime--;
     $("#timer").text("Timer: " + allowedTime);
@@ -97,6 +98,7 @@ majorMoveGame = function(){
     }
 }
 
+//function for display question and answer
 DisplayQandA = function(){
     $("#questions-note").empty();
     $("#disclose-answer").empty();
@@ -125,6 +127,7 @@ DisplayQandA = function(){
     console.log("count: " + count);
 }
 
+//after time up instructions in function
 timeUp = function(){
     $("#questions-note").empty();
     $("#img-gif").hide();
@@ -136,6 +139,7 @@ timeUp = function(){
     $("#img-gif").attr("src", gifs[count-1]);
 }
 
+//when game restart following function will call
 restart = function() {
     allowedTime = 15;
     $("#timer").text("Timer: " + allowedTime);
@@ -143,16 +147,18 @@ restart = function() {
     DisplayQandA();
 }
 
+//for congratulate player
 congrats = function() {
     $("#questions-note").empty();
     $("#img-gif").attr("src", "");
     $("#img-gif").show();
     $(".answers").empty();
     $(".answers").hide();
-    $("#questions-note").text("Congrats!");
+    $("#questions-note").text("Congrats! Correct Answer");
     $("#img-gif").attr("src", gifs[count-1]);
 }
 
+//for wrong answer display following function
 wrongAns = function() {
     $("#questions-note").empty();
     $("#img-gif").attr("src", "");
@@ -164,6 +170,7 @@ wrongAns = function() {
     $("#img-gif").attr("src", gifs[count-1]);
 }
 
+//display all result 
 displayResult = function () { 
     $("#questions-note").empty();
     $("#disclose-answer").empty();
@@ -178,6 +185,7 @@ displayResult = function () {
     $("#start-again").attr("style", "display:block");
 }
 
+//if user click on button
 $(".answers").on("click", function () {
     clearInterval(moveGame); 
     var answer = $(this).val();  
@@ -203,7 +211,7 @@ $(".answers").on("click", function () {
     }
 });
 
-//after timeup start again
+//after timeup start again on click
 $("#start-again").on("click", function () {
     $("#start-again").attr("style", "display:none");
     count = 0;
