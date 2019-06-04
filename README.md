@@ -28,7 +28,7 @@
 
 
  ## Images 
-![# TriviaGame](assets/readme-images/triviaGame.png)
+![# TriviaGame](assets/images/triviaGame.png)
 
 ## Author
 Minal Kharche
