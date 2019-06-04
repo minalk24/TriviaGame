@@ -130,8 +130,9 @@ DisplayQandA = function(){
 //after time up instructions in function
 timeUp = function(){
     $("#questions-note").empty();
-    $("#img-gif").hide();
+    //$("#img-gif").hide();
     $("#img-gif").attr("src", "");
+    $("#img-gif").show();
     $(".answers").empty();
     $(".answers").hide();
     $("#questions-note").text("Time up!");
