@@ -44,15 +44,15 @@ var questionsData = [
     }, 
     {
         "question": "Where is the House of Black and White, the training temple of the Faceless Men?",
-        "ans1": "Qarth ",
+        "ans1": "Qarth",
         "ans2": "Braavos",
         "ans3": "Meereen",  
         "ans4": "No one knows" 
     }, 
     {
         "question": "Whose last words were: 'Give me something for the pain, and let me die'?",
-        "ans1": "Stannis Baratheon ",
-        "ans2": "Hodor ",
+        "ans1": "Stannis Baratheon",
+        "ans2": "Hodor",
         "ans3": "Robert Baratheon",  
         "ans4": "Walder Frey" 
     } 
